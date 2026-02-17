@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Village Handcrafted — Links</title>
+  <meta name="description" content="Quick links to all Village Handcrafted resources">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --card: #1a1a1a;
+      --card-hover: #242424;
+      --border: #2a2a2a;
+      --text: #e5e5e5;
+      --text-muted: #888;
+      --accent: #c8a97e;
+      --accent-dim: rgba(200,169,126,0.12);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.25rem 2rem;
+    }
+    .container { max-width: 480px; width: 100%; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .logo {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.75rem;
+    }
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Category */
+    .category {
+      margin-bottom: 1.75rem;
+    }
+    .category-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      padding-left: 0.25rem;
+    }
+
+    /* Link cards */
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.875rem 1rem;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.15s ease;
+    }
+    .link-card:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .link-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .link-info { flex: 1; min-width: 0; }
+    .link-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .link-url {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .link-arrow {
+      color: var(--text-muted);
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
+    }
+    .link-card:hover .link-arrow {
+      color: var(--accent);
+      transform: translateX(2px);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">🏠</div>
+      <h1>Village Handcrafted</h1>
+      <p>Quick access to all our resources</p>
+    </div>
+
+    <!-- Business -->
+    <div class="category">
+      <div class="category-label">Business</div>
+      <a href="https://link.villagehandcrafted.ai/site" class="link-card">
+        <div class="link-icon">🌐</div>
+        <div class="link-info">
+          <div class="link-title">Village Handcrafted</div>
+          <div class="link-url">villagehandcrafted.com</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+      <a href="https://link.villagehandcrafted.ai/cannon" class="link-card">
+        <div class="link-icon">💥</div>
+        <div class="link-info">
+          <div class="link-title">Cannon</div>
+          <div class="link-url">cannon.villagehandcrafted.com</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- Business Tools -->
+    <div class="category">
+      <div class="category-label">Business Tools</div>
+      <a href="https://link.villagehandcrafted.ai/hubspot" class="link-card">
+        <div class="link-icon">🟠</div>
+        <div class="link-info">
+          <div class="link-title">HubSpot</div>
+          <div class="link-url">hubspot.com</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+      <a href="https://link.villagehandcrafted.ai/smartsheet" class="link-card">
+        <div class="link-icon">📊</div>
+        <div class="link-info">
+          <div class="link-title">Smartsheet</div>
+          <div class="link-url">smartsheet.com</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- IT -->
+    <div class="category">
+      <div class="category-label">IT</div>
+      <a href="https://link.villagehandcrafted.ai/support" class="link-card">
+        <div class="link-icon">🎫</div>
+        <div class="link-info">
+          <div class="link-title">Support Portal</div>
+          <div class="link-url">support.villagehandcrafted.ai</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+      <a href="https://link.villagehandcrafted.ai/scan" class="link-card">
+        <div class="link-icon">📱</div>
+        <div class="link-info">
+          <div class="link-title">KBIS Scanner App</div>
+          <div class="link-url">scan.villagehandcrafted.ai</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+      <a href="https://link.villagehandcrafted.ai/photos" class="link-card">
+        <div class="link-icon">📸</div>
+        <div class="link-info">
+          <div class="link-title">Pics.io</div>
+          <div class="link-url">show.pics.io/village-company-photos</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- Operations -->
+    <div class="category">
+      <div class="category-label">Operations</div>
+      <a href="https://link.villagehandcrafted.ai/ops" class="link-card">
+        <div class="link-icon">⚙️</div>
+        <div class="link-info">
+          <div class="link-title">Production OS</div>
+          <div class="link-url">ops.villagehandcrafted.ai</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="footer">© Village Handcrafted</div>
+  </div>
+</body>
+</html>

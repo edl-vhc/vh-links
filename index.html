@@ -3,227 +3,596 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Village Handcrafted — Links</title>
-  <meta name="description" content="Quick links to all Village Handcrafted resources">
+  <title>Village Handcrafted — Team Hub</title>
+  <meta name="description" content="Internal quick links for the Village Handcrafted team">
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0f0f;
-      --card: #1a1a1a;
-      --card-hover: #242424;
-      --border: #2a2a2a;
-      --text: #e5e5e5;
-      --text-muted: #888;
-      --accent: #c8a97e;
-      --accent-dim: rgba(200,169,126,0.12);
+      --bg-deep: #070707;
+      --bg-surface: #0d0d0d;
+      --bg-card: #111111;
+      --bg-card-hover: #181818;
+      --border: rgba(152, 130, 92, 0.1);
+      --border-hover: rgba(152, 130, 92, 0.35);
+      --cream: #efebe2;
+      --cream-dim: #c4bfb4;
+      --text-secondary: #7d786f;
+      --text-tertiary: #4a4640;
+      --gold: #98825c;
+      --gold-bright: #b49d74;
+      --gold-dim: rgba(152, 130, 92, 0.07);
+      --gold-glow: rgba(152, 130, 92, 0.06);
+      --serif: 'Cormorant Garamond', 'Georgia', serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: var(--sans);
+      background: var(--bg-deep);
+      color: var(--cream);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3rem 1.25rem 2rem;
+      padding: 0 1.5rem 4rem;
+      position: relative;
+      overflow-x: hidden;
     }
-    .container { max-width: 480px; width: 100%; }
 
-    /* Header */
+    /* Subtle noise texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.02;
+      pointer-events: none;
+      z-index: 100;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 512px 512px;
+    }
+
+    /* Ambient gold glow */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -250px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(152,130,92,0.035) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Header ─── */
     .header {
       text-align: center;
-      margin-bottom: 2.5rem;
+      padding: 4rem 0 3rem;
     }
-    .logo {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: var(--accent-dim);
-      border: 2px solid var(--accent);
-      display: flex; align-items: center; justify-content: center;
+
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-wrap svg {
+      width: 340px;
+      height: auto;
+    }
+
+    .header-rule {
+      width: 64px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
       margin: 0 auto 1rem;
-      font-size: 1.75rem;
-    }
-    .header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.35rem;
-    }
-    .header p {
-      color: var(--text-muted);
-      font-size: 0.875rem;
     }
 
-    /* Category */
-    .category {
-      margin-bottom: 1.75rem;
-    }
-    .category-label {
+    .header-subtitle {
+      font-family: var(--sans);
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 400;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-      padding-left: 0.25rem;
+      color: var(--text-tertiary);
     }
 
-    /* Link cards */
+    /* ─── Category Sections ─── */
+    .category {
+      margin-bottom: 2.25rem;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.875rem;
+      padding: 0 0.25rem;
+    }
+
+    .category-label {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .category-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent 80%);
+    }
+
+    /* ─── Link Cards ─── */
     .link-card {
       display: flex;
       align-items: center;
-      gap: 0.875rem;
-      background: var(--card);
+      gap: 1.125rem;
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.875rem 1rem;
-      margin-bottom: 0.5rem;
+      border-radius: 16px;
+      padding: 1.125rem 1.375rem;
+      margin-bottom: 0.625rem;
       text-decoration: none;
-      color: var(--text);
-      transition: all 0.15s ease;
+      color: var(--cream);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 0% 50%, var(--gold-glow), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
     .link-card:hover {
-      background: var(--card-hover);
-      border-color: var(--accent);
-      transform: translateY(-1px);
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow:
+        0 12px 40px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(152,130,92,0.12),
+        inset 0 1px 0 rgba(152,130,92,0.05);
     }
+
+    .link-card:hover::before { opacity: 1; }
+
+    .link-card:active {
+      transform: translateY(0);
+      transition-duration: 0.08s;
+    }
+
+    /* ─── Icon ─── */
     .link-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      background: var(--accent-dim);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
     }
-    .link-info { flex: 1; min-width: 0; }
+
+    .link-icon svg {
+      width: 22px;
+      height: 22px;
+      transition: all 0.3s ease;
+    }
+
+    .link-card:hover .link-icon { transform: scale(1.06); }
+
+    /* Per-brand icon coloring */
+    .ic-vhc { background: rgba(152,130,92,0.1); }
+    .ic-vhc svg { fill: var(--gold); }
+
+    .ic-cannon { background: rgba(215,115,65,0.08); }
+    .ic-cannon svg { fill: #d77341; stroke: #d77341; }
+
+    .ic-hubspot { background: rgba(255,122,69,0.08); }
+    .ic-hubspot svg { fill: #ff7a45; }
+
+    .ic-smartsheet { background: rgba(0,131,207,0.08); }
+    .ic-smartsheet svg { fill: #0083cf; }
+
+    .ic-support { background: rgba(100,190,150,0.08); }
+    .ic-support svg { fill: #64be96; stroke: #64be96; }
+
+    .ic-scan { background: rgba(150,130,200,0.08); }
+    .ic-scan svg { fill: #9682c8; stroke: #9682c8; }
+
+    .ic-photos { background: rgba(70,175,215,0.08); }
+    .ic-photos svg { fill: #46afd7; stroke: #46afd7; }
+
+    .ic-ops { background: rgba(152,130,92,0.1); }
+    .ic-ops svg { fill: var(--gold); stroke: var(--gold); }
+
+    /* ─── Text ─── */
+    .link-info {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+
     .link-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      line-height: 1.3;
+      font-family: var(--sans);
+      font-size: 0.975rem;
+      font-weight: 500;
+      line-height: 1.35;
+      color: var(--cream);
+      letter-spacing: -0.01em;
     }
+
     .link-url {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+      font-family: var(--sans);
+      font-size: 0.725rem;
+      font-weight: 300;
+      color: var(--text-tertiary);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-    .link-arrow {
-      color: var(--text-muted);
-      font-size: 1rem;
-      flex-shrink: 0;
-      transition: transform 0.15s ease;
-    }
-    .link-card:hover .link-arrow {
-      color: var(--accent);
-      transform: translateX(2px);
+      margin-top: 0.2rem;
+      letter-spacing: 0.02em;
     }
 
-    /* Footer */
+    /* ─── Arrow ─── */
+    .link-arrow {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link-arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: var(--text-tertiary);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: all 0.3s ease;
+    }
+
+    .link-card:hover .link-arrow svg {
+      stroke: var(--gold);
+      transform: translateX(3px);
+    }
+
+    /* ─── Footer ─── */
     .footer {
-      margin-top: 2.5rem;
+      margin-top: 2rem;
+      padding-top: 2.5rem;
       text-align: center;
-      color: var(--text-muted);
-      font-size: 0.7rem;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(152,130,92,0.15), transparent);
+    }
+
+    .footer-text {
+      font-family: var(--serif);
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-tertiary);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    /* ─── Entrance Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .header { animation: fadeDown 0.7s ease-out both; }
+
+    .category:nth-child(1) .category-header { animation: fadeIn 0.4s ease-out 0.2s both; }
+    .category:nth-child(2) .category-header { animation: fadeIn 0.4s ease-out 0.45s both; }
+    .category:nth-child(3) .category-header { animation: fadeIn 0.4s ease-out 0.65s both; }
+    .category:nth-child(4) .category-header { animation: fadeIn 0.4s ease-out 0.85s both; }
+
+    .category:nth-child(1) .link-card:nth-child(2) { animation: fadeUp 0.5s ease-out 0.25s both; }
+    .category:nth-child(1) .link-card:nth-child(3) { animation: fadeUp 0.5s ease-out 0.32s both; }
+    .category:nth-child(2) .link-card:nth-child(2) { animation: fadeUp 0.5s ease-out 0.5s both; }
+    .category:nth-child(2) .link-card:nth-child(3) { animation: fadeUp 0.5s ease-out 0.57s both; }
+    .category:nth-child(3) .link-card:nth-child(2) { animation: fadeUp 0.5s ease-out 0.7s both; }
+    .category:nth-child(3) .link-card:nth-child(3) { animation: fadeUp 0.5s ease-out 0.77s both; }
+    .category:nth-child(3) .link-card:nth-child(4) { animation: fadeUp 0.5s ease-out 0.84s both; }
+    .category:nth-child(4) .link-card:nth-child(2) { animation: fadeUp 0.5s ease-out 0.9s both; }
+
+    .footer { animation: fadeIn 0.5s ease-out 1s both; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 640px) {
+      .logo-wrap svg { width: 260px; }
+      .header { padding: 3rem 0 2.25rem; }
+    }
+    @media (max-width: 480px) {
+      body { padding: 0 1.125rem 3rem; }
+      .logo-wrap svg { width: 220px; }
+      .link-card { padding: 1rem 1.125rem; gap: 1rem; border-radius: 14px; }
+      .link-icon { width: 42px; height: 42px; border-radius: 10px; }
+      .link-icon svg { width: 20px; height: 20px; }
+      .link-title { font-size: 0.925rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
+
+    <!-- ── Header ── -->
     <div class="header">
-      <div class="logo">🏠</div>
-      <h1>Village Handcrafted</h1>
-      <p>Quick access to all our resources</p>
+      <div class="logo-wrap">
+        <!-- Official VHC Knockout Logo (inline SVG from brand assets) -->
+        <svg viewBox="0 0 420.72 68.4" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Village Handcrafted Cabinetry">
+          <path fill="#efebe2" d="M418.72,2v64.4H2V2h416.72M420.72,0H0v68.4h420.72V0h0Z"/>
+          <path fill="#efebe2" d="M55.644,19.347c-3.407.351-4.108.852-6.012,5.41-1.402,3.357-6.562,15.831-10.369,26.15h-1.704c-3.356-9.168-7.614-20.188-10.319-27.052-1.503-3.757-2.304-4.208-5.31-4.508v-1.503h12.774v1.503c-3.607.401-3.707.801-2.956,2.956,1.353,3.657,5.06,13.426,8.116,21.341h.1c2.605-6.463,6.062-15.48,7.614-20.389,1.002-3.005.751-3.457-3.306-3.907v-1.503h11.372v1.503Z"/>
+          <path fill="#efebe2" d="M62.347,50.406v-1.453c4.007-.3,4.458-.601,4.458-4.859v-19.888c0-4.258-.451-4.559-4.458-4.909v-1.453h13.575v1.453c-4.007.351-4.458.651-4.458,4.909v19.888c0,4.259.451,4.56,4.458,4.859v1.453H62.347Z"/>
+          <path fill="#efebe2" d="M108.595,42.441c-.3,1.652-1.353,6.462-1.803,7.965h-22.994v-1.453c4.208-.3,4.659-.65,4.659-4.909v-19.888c0-4.258-.351-4.509-4.408-4.859v-1.453h13.476v1.453c-3.907.301-4.408.551-4.408,4.859v19.737c0,2.655.25,3.607,1.202,4.108.952.551,2.605.601,4.609.601,2.655,0,4.358-.25,5.51-1.553.902-1.002,1.803-2.605,2.605-4.96l1.553.352Z"/>
+          <path fill="#efebe2" d="M140.16,42.441c-.3,1.652-1.353,6.462-1.803,7.965h-22.994v-1.453c4.208-.3,4.659-.65,4.659-4.909v-19.888c0-4.258-.351-4.509-4.408-4.859v-1.453h13.476v1.453c-3.907.301-4.408.551-4.408,4.859v19.737c0,2.655.25,3.607,1.202,4.108.952.551,2.605.601,4.608.601,2.655,0,4.358-.25,5.511-1.553.901-1.002,1.803-2.605,2.605-4.96l1.553.352Z"/>
+          <path fill="#efebe2" d="M163.382,50.406v-1.453c3.106-.4,3.507-.852,2.855-2.855-.601-1.903-1.553-4.458-2.605-7.363h-10.52c-.751,2.153-1.453,4.208-2.104,6.262-1.001,3.056-.651,3.557,3.106,3.957v1.453h-10.971v-1.453c3.256-.45,3.908-.801,5.661-5.21l10.32-26.149,1.753-.501c3.106,8.616,6.462,18.034,9.668,26.701,1.553,4.308,2.254,4.809,5.51,5.159v1.453h-12.674ZM158.623,24.106h-.15c-1.553,4.158-3.056,8.366-4.559,12.424h8.967l-4.258-12.424Z"/>
+          <path fill="#efebe2" d="M211.459,36.68c-2.906.451-3.157.702-3.157,3.707v4.208c0,1.754.051,3.356.351,4.709-3.056.752-7.264,1.854-11.221,1.854-11.171,0-18.535-6.813-18.535-16.781,0-11.572,9.318-17.283,19.236-17.283,4.208,0,8.016,1.102,9.668,1.453.15,1.704.401,4.458.802,7.915l-1.503.301c-1.202-6.012-4.959-7.815-9.768-7.815-7.314,0-12.875,5.611-12.875,14.778,0,7.314,4.158,15.63,13.576,15.63,1.553,0,3.056-.301,4.058-.852.951-.501,1.502-1.202,1.502-3.156v-4.358c0-3.606-.3-3.907-5.26-4.309v-1.452h13.125v1.452Z"/>
+          <path fill="#efebe2" d="M244.268,42.441c-.25,1.753-1.302,6.412-1.703,7.965h-24.446v-1.453c4.509-.351,4.96-.751,4.96-4.909v-19.787c0-4.458-.451-4.659-4.259-5.01v-1.453h22.543c0,1.202.251,4.609.451,7.264l-1.553.25c-.451-2.054-1.002-3.256-1.653-4.258-.752-1.102-2.104-1.453-5.561-1.453h-3.557c-1.604,0-1.754.15-1.754,1.653v11.271h4.509c4.458,0,4.81-.401,5.41-3.757h1.503v9.668h-1.503c-.651-3.557-1.052-3.857-5.41-3.857h-4.509v9.268c0,2.354.301,3.507,1.202,4.108.952.601,2.705.601,5.11.601,3.606,0,5.06-.4,6.161-1.653.902-1.052,1.804-2.755,2.555-4.759l1.503.251Z"/>
+          <!-- HANDCRAFTED -->
+          <path fill="#efebe2" d="M266.14,29.486h-1.961v-4.26h-4.55v4.26h-1.962v-9.646h1.962v3.73h4.55v-3.73h1.961v9.646Z"/>
+          <path fill="#efebe2" d="M280.514,29.486h-1.962l-.965-2.379h-3.938l-.965,2.379h-1.897l4.1-9.646h1.528l4.1,9.646ZM277.032,25.74l-1.414-3.487-1.415,3.487h2.829Z"/>
+          <path fill="#efebe2" d="M293.343,29.486h-1.367l-5.048-6.367v6.367h-1.753v-9.646h1.368l5.047,6.365v-6.365h1.753v9.646Z"/>
+          <path fill="#efebe2" d="M306.446,21.182c.91.895,1.366,2.055,1.366,3.48,0,1.426-.456,2.586-1.366,3.481-.911.895-2.283,1.342-4.116,1.342h-3.393v-9.646h3.393c1.833,0,3.205.448,4.116,1.343ZM305.803,24.663c0-2.165-1.19-3.248-3.569-3.248h-1.334v6.495h1.334c2.38,0,3.569-1.083,3.569-3.248Z"/>
+          <path fill="#efebe2" d="M320.995,28.714c-.857.654-1.978.98-3.36.98-1.447,0-2.672-.461-3.674-1.383-1.002-.921-1.503-2.138-1.503-3.649s.501-2.728,1.503-3.649c1.002-.922,2.227-1.383,3.674-1.383,1.383,0,2.503.327,3.36.981v1.784c-.911-.793-1.962-1.189-3.151-1.189-.976,0-1.774.311-2.396.933-.622.621-.933,1.463-.933,2.524s.311,1.903.933,2.524c.621.622,1.42.932,2.396.932,1.189,0,2.24-.396,3.151-1.189v1.785Z"/>
+          <path fill="#efebe2" d="M331.333,25.435l2.861,4.051h-2.154l-2.675-3.842h-1.199v3.842h-1.962v-9.646h3.795c1.082,0,1.896.276,2.443.828.547.552.82,1.246.82,2.082,0,.665-.169,1.235-.507,1.712-.338.477-.812.801-1.423.973ZM328.166,21.238v3.022h1.511c1.104,0,1.656-.499,1.656-1.495,0-1.018-.552-1.527-1.656-1.527h-1.511Z"/>
+          <path fill="#efebe2" d="M347.78,29.486h-1.962l-.965-2.379h-3.938l-.965,2.379h-1.897l4.1-9.646h1.528l4.1,9.646ZM344.299,25.74l-1.414-3.487-1.415,3.487h2.829Z"/>
+          <path fill="#efebe2" d="M358.616,21.367h-4.212v2.332h3.408v1.511h-3.408v4.276h-1.962v-9.646h6.174v1.527Z"/>
+          <path fill="#efebe2" d="M371.188,21.367h-3.264v8.119h-1.962v-8.119h-3.264v-1.527h8.489v1.527Z"/>
+          <path fill="#efebe2" d="M382.169,29.486h-6.286v-9.646h6.286v1.527h-4.324v2.267h3.521v1.527h-3.521v2.797h4.324v1.527Z"/>
+          <path fill="#efebe2" d="M394.967,21.182c.91.895,1.366,2.055,1.366,3.48,0,1.426-.456,2.586-1.366,3.481-.911.895-2.283,1.342-4.116,1.342h-3.393v-9.646h3.393c1.833,0,3.205.448,4.116,1.343ZM394.323,24.663c0-2.165-1.19-3.248-3.569-3.248h-1.334v6.495h1.334c2.38,0,3.569-1.083,3.569-3.248Z"/>
+          <!-- CABINETRY -->
+          <path fill="#efebe2" d="M265.738,47.663c-.857.654-1.978.98-3.36.98-1.447,0-2.672-.461-3.674-1.383-1.002-.921-1.503-2.138-1.503-3.649,0-1.511.501-2.728,1.503-3.649,1.002-.922,2.227-1.383,3.674-1.383,1.383,0,2.503.327,3.36.981v1.784c-.911-.793-1.962-1.189-3.151-1.189-.976,0-1.774.311-2.396.933-.622.621-.933,1.463-.933,2.523,0,1.062.311,1.903.933,2.524.621.622,1.42.933,2.396.933,1.189,0,2.24-.397,3.151-1.19v1.784Z"/>
+          <path fill="#efebe2" d="M279.742,48.435h-1.962l-.965-2.379h-3.938l-.965,2.379h-1.897l4.1-9.646h1.528l4.1,9.646ZM276.261,44.688l-1.414-3.486-1.415,3.486h2.829Z"/>
+          <path fill="#efebe2" d="M291.574,45.605c0,.836-.271,1.517-.813,2.042-.541.524-1.358.787-2.451.787h-3.907v-9.646h3.746c.986,0,1.718.233,2.194.699.478.467.716,1.075.716,1.825,0,.354-.1.707-.298,1.062-.198.354-.441.632-.731.836.472.203.847.525,1.126.965.278.44.418.916.418,1.431ZM286.365,40.155v2.508h1.463c.472,0,.82-.115,1.045-.346.226-.23.338-.533.338-.908s-.112-.678-.338-.908c-.225-.23-.573-.346-1.045-.346h-1.463ZM289.259,46.65c.278-.278.418-.648.418-1.109s-.14-.828-.418-1.102-.707-.41-1.286-.41h-1.607v3.039h1.607c.579,0,1.008-.14,1.286-.418Z"/>
+          <path fill="#efebe2" d="M298.552,48.435h-1.962v-9.646h1.962v9.646Z"/>
+          <path fill="#efebe2" d="M312.298,48.435h-1.367l-5.048-6.366v6.366h-1.753v-9.646h1.368l5.047,6.365v-6.365h1.753v9.646Z"/>
+          <path fill="#efebe2" d="M324.179,48.435h-6.286v-9.646h6.286v1.527h-4.324v2.268h3.521v1.527h-3.521v2.797h4.324v1.527Z"/>
+          <path fill="#efebe2" d="M337.057,40.315h-3.264v8.119h-1.962v-8.119h-3.264v-1.527h8.489v1.527Z"/>
+          <path fill="#efebe2" d="M346.88,44.384l2.861,4.051h-2.154l-2.675-3.842h-1.199v3.842h-1.962v-9.646h3.795c1.082,0,1.896.276,2.443.828.547.553.82,1.246.82,2.082,0,.665-.169,1.235-.507,1.713-.338.477-.812.801-1.423.973ZM343.713,40.188v3.022h1.511c1.104,0,1.656-.499,1.656-1.495,0-1.019-.552-1.527-1.656-1.527h-1.511Z"/>
+          <path fill="#efebe2" d="M362.442,38.788l-3.778,5.789v3.857h-1.962v-3.857l-3.777-5.789h2.138l2.653,4.212,2.652-4.212h2.074Z"/>
+        </svg>
+      </div>
+      <div class="header-rule"></div>
+      <div class="header-subtitle">Team Resources</div>
     </div>
 
-    <!-- Business -->
+    <!-- ── Business ── -->
     <div class="category">
-      <div class="category-label">Business</div>
+      <div class="category-header">
+        <span class="category-label">Business</span>
+        <span class="category-line"></span>
+      </div>
+
       <a href="https://link.villagehandcrafted.ai/site" class="link-card">
-        <div class="link-icon">🌐</div>
+        <div class="link-icon ic-vhc">
+          <!-- Globe icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <ellipse cx="12" cy="12" rx="4" ry="9.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M3.5 9h17M3.5 15h17" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
         <div class="link-info">
           <div class="link-title">Village Handcrafted</div>
           <div class="link-url">villagehandcrafted.com</div>
         </div>
-        <span class="link-arrow">→</span>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
+
       <a href="https://link.villagehandcrafted.ai/cannon" class="link-card">
-        <div class="link-icon">💥</div>
+        <div class="link-icon ic-cannon">
+          <!-- Crosshair / target icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
         <div class="link-info">
           <div class="link-title">Cannon</div>
           <div class="link-url">cannon.villagehandcrafted.com</div>
         </div>
-        <span class="link-arrow">→</span>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
 
-    <!-- Business Tools -->
+    <!-- ── Business Tools ── -->
     <div class="category">
-      <div class="category-label">Business Tools</div>
+      <div class="category-header">
+        <span class="category-label">Business Tools</span>
+        <span class="category-line"></span>
+      </div>
+
       <a href="https://link.villagehandcrafted.ai/hubspot" class="link-card">
-        <div class="link-icon">🟠</div>
+        <div class="link-icon ic-hubspot">
+          <!-- Official HubSpot icon (Simple Icons) -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/>
+          </svg>
+        </div>
         <div class="link-info">
           <div class="link-title">HubSpot</div>
           <div class="link-url">hubspot.com</div>
         </div>
-        <span class="link-arrow">→</span>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
+
       <a href="https://link.villagehandcrafted.ai/smartsheet" class="link-card">
-        <div class="link-icon">📊</div>
+        <div class="link-icon ic-smartsheet">
+          <!-- Smartsheet grid icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="7" height="3.5" rx="0.75" fill="currentColor"/>
+            <rect x="14" y="3" width="7" height="3.5" rx="0.75" fill="currentColor"/>
+            <rect x="3" y="10.25" width="7" height="3.5" rx="0.75" fill="currentColor"/>
+            <rect x="14" y="10.25" width="7" height="3.5" rx="0.75" fill="currentColor"/>
+            <rect x="3" y="17.5" width="7" height="3.5" rx="0.75" fill="currentColor"/>
+            <rect x="14" y="17.5" width="7" height="3.5" rx="0.75" fill="currentColor"/>
+          </svg>
+        </div>
         <div class="link-info">
           <div class="link-title">Smartsheet</div>
           <div class="link-url">smartsheet.com</div>
         </div>
-        <span class="link-arrow">→</span>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
 
-    <!-- IT -->
+    <!-- ── IT ── -->
     <div class="category">
-      <div class="category-label">IT</div>
+      <div class="category-header">
+        <span class="category-label">IT</span>
+        <span class="category-line"></span>
+      </div>
+
       <a href="https://link.villagehandcrafted.ai/support" class="link-card">
-        <div class="link-icon">🎫</div>
+        <div class="link-icon ic-support">
+          <!-- Headset / support icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 17V12a8 8 0 1116 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <rect x="2" y="14" width="3" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <rect x="19" y="14" width="3" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M19 20v1a2 2 0 01-2 2h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
         <div class="link-info">
           <div class="link-title">Support Portal</div>
           <div class="link-url">support.villagehandcrafted.ai</div>
         </div>
-        <span class="link-arrow">→</span>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
+
       <a href="https://link.villagehandcrafted.ai/scan" class="link-card">
-        <div class="link-icon">📱</div>
+        <div class="link-icon ic-scan">
+          <!-- QR / scanner icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <rect x="5.5" y="5.5" width="2" height="2" rx="0.4" fill="currentColor"/>
+            <rect x="16.5" y="5.5" width="2" height="2" rx="0.4" fill="currentColor"/>
+            <rect x="5.5" y="16.5" width="2" height="2" rx="0.4" fill="currentColor"/>
+            <rect x="14" y="14" width="3.5" height="3.5" rx="0.5" fill="currentColor"/>
+            <rect x="19.5" y="14" width="1.5" height="1.5" rx="0.3" fill="currentColor"/>
+            <rect x="14" y="19.5" width="1.5" height="1.5" rx="0.3" fill="currentColor"/>
+            <rect x="19.5" y="19.5" width="1.5" height="1.5" rx="0.3" fill="currentColor"/>
+          </svg>
+        </div>
         <div class="link-info">
           <div class="link-title">KBIS Scanner App</div>
           <div class="link-url">scan.villagehandcrafted.ai</div>
         </div>
-        <span class="link-arrow">→</span>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
+
       <a href="https://link.villagehandcrafted.ai/photos" class="link-card">
-        <div class="link-icon">📸</div>
+        <div class="link-icon ic-photos">
+          <!-- Camera icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9a2 2 0 012-2h1.586a1 1 0 00.707-.293l1.414-1.414A1 1 0 019.414 5h5.172a1 1 0 01.707.293l1.414 1.414A1 1 0 0017.414 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
         <div class="link-info">
           <div class="link-title">Pics.io</div>
           <div class="link-url">show.pics.io/village-company-photos</div>
         </div>
-        <span class="link-arrow">→</span>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
 
-    <!-- Operations -->
+    <!-- ── Operations ── -->
     <div class="category">
-      <div class="category-label">Operations</div>
+      <div class="category-header">
+        <span class="category-label">Operations</span>
+        <span class="category-line"></span>
+      </div>
+
       <a href="https://link.villagehandcrafted.ai/ops" class="link-card">
-        <div class="link-icon">⚙️</div>
+        <div class="link-icon ic-ops">
+          <!-- Settings / gear icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
         <div class="link-info">
           <div class="link-title">Production OS</div>
           <div class="link-url">ops.villagehandcrafted.ai</div>
         </div>
-        <span class="link-arrow">→</span>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
 
-    <div class="footer">© Village Handcrafted</div>
+    <!-- ── Footer ── -->
+    <div class="footer">
+      <div class="footer-text">Village Handcrafted Cabinetry · Lansdale, PA</div>
+    </div>
+
   </div>
 </body>
 </html>

@@ -203,38 +203,44 @@
       transition: transform 0.3s ease;
     }
 
-    .link-icon svg {
+    .link-icon svg,
+    .link-icon img {
       width: 22px;
       height: 22px;
       transition: all 0.3s ease;
     }
 
+    .link-icon img {
+      display: block;
+      object-fit: contain;
+    }
+
     .link-card:hover .link-icon { transform: scale(1.06); }
 
-    /* Per-brand icon coloring */
+    /* Per-brand icon backgrounds + logo tinting */
     .ic-vhc { background: rgba(152,130,92,0.1); }
-    .ic-vhc svg { fill: var(--gold); }
+    .ic-vhc img { filter: brightness(0) saturate(100%) invert(66%) sepia(17%) saturate(535%) hue-rotate(357deg) brightness(95%) contrast(88%); }
 
     .ic-cannon { background: rgba(215,115,65,0.08); }
-    .ic-cannon svg { fill: #d77341; stroke: #d77341; }
+    .ic-cannon img { filter: brightness(0) saturate(100%) invert(50%) sepia(36%) saturate(1571%) hue-rotate(338deg) brightness(94%) contrast(86%); }
 
     .ic-hubspot { background: rgba(255,122,69,0.08); }
-    .ic-hubspot svg { fill: #ff7a45; }
+    .ic-hubspot img { filter: brightness(0) saturate(100%) invert(58%) sepia(85%) saturate(2335%) hue-rotate(334deg) brightness(102%) contrast(102%); }
 
     .ic-smartsheet { background: rgba(0,131,207,0.08); }
-    .ic-smartsheet svg { fill: #0083cf; }
+    .ic-smartsheet img { filter: brightness(0) saturate(100%) invert(37%) sepia(95%) saturate(1474%) hue-rotate(170deg) brightness(95%) contrast(101%); }
 
     .ic-support { background: rgba(100,190,150,0.08); }
-    .ic-support svg { fill: #64be96; stroke: #64be96; }
+    .ic-support img { filter: brightness(0) saturate(100%) invert(70%) sepia(21%) saturate(526%) hue-rotate(102deg) brightness(88%) contrast(88%); }
 
     .ic-scan { background: rgba(150,130,200,0.08); }
-    .ic-scan svg { fill: #9682c8; stroke: #9682c8; }
+    .ic-scan img { filter: brightness(0) saturate(100%) invert(58%) sepia(20%) saturate(652%) hue-rotate(217deg) brightness(95%) contrast(87%); }
 
     .ic-photos { background: rgba(70,175,215,0.08); }
-    .ic-photos svg { fill: #46afd7; stroke: #46afd7; }
+    .ic-photos img { filter: brightness(0) saturate(100%) invert(66%) sepia(62%) saturate(469%) hue-rotate(157deg) brightness(90%) contrast(89%); }
 
     .ic-ops { background: rgba(152,130,92,0.1); }
-    .ic-ops svg { fill: var(--gold); stroke: var(--gold); }
+    .ic-ops img { filter: brightness(0) saturate(100%) invert(66%) sepia(17%) saturate(535%) hue-rotate(357deg) brightness(95%) contrast(88%); }
 
     /* ─── Text ─── */
     .link-info {
@@ -364,7 +370,7 @@
       .logo-wrap svg { width: 220px; }
       .link-card { padding: 1rem 1.125rem; gap: 1rem; border-radius: 14px; }
       .link-icon { width: 42px; height: 42px; border-radius: 10px; }
-      .link-icon svg { width: 20px; height: 20px; }
+      .link-icon svg, .link-icon img { width: 20px; height: 20px; }
       .link-title { font-size: 0.925rem; }
     }
 
@@ -430,12 +436,7 @@
 
       <a href="https://link.villagehandcrafted.ai/site" class="link-card">
         <div class="link-icon ic-vhc">
-          <!-- Globe icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <ellipse cx="12" cy="12" rx="4" ry="9.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M3.5 9h17M3.5 15h17" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          </svg>
+          <img src="assets/logos/village-handcrafted.svg" alt="Village Handcrafted logo" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">Village Handcrafted</div>
@@ -446,12 +447,7 @@
 
       <a href="https://link.villagehandcrafted.ai/cannon" class="link-card">
         <div class="link-icon ic-cannon">
-          <!-- Crosshair / target icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </svg>
+          <img src="assets/logos/cannon.svg" alt="Cannon logo" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">Cannon</div>
@@ -470,10 +466,7 @@
 
       <a href="https://link.villagehandcrafted.ai/hubspot" class="link-card">
         <div class="link-icon ic-hubspot">
-          <!-- Official HubSpot icon (Simple Icons) -->
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/>
-          </svg>
+          <img src="assets/logos/hubspot.svg" alt="HubSpot logo" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">HubSpot</div>
@@ -484,15 +477,7 @@
 
       <a href="https://link.villagehandcrafted.ai/smartsheet" class="link-card">
         <div class="link-icon ic-smartsheet">
-          <!-- Smartsheet grid icon -->
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="7" height="3.5" rx="0.75" fill="currentColor"/>
-            <rect x="14" y="3" width="7" height="3.5" rx="0.75" fill="currentColor"/>
-            <rect x="3" y="10.25" width="7" height="3.5" rx="0.75" fill="currentColor"/>
-            <rect x="14" y="10.25" width="7" height="3.5" rx="0.75" fill="currentColor"/>
-            <rect x="3" y="17.5" width="7" height="3.5" rx="0.75" fill="currentColor"/>
-            <rect x="14" y="17.5" width="7" height="3.5" rx="0.75" fill="currentColor"/>
-          </svg>
+          <img src="assets/logos/smartsheet.svg" alt="Smartsheet logo" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">Smartsheet</div>
@@ -511,13 +496,7 @@
 
       <a href="https://link.villagehandcrafted.ai/support" class="link-card">
         <div class="link-icon ic-support">
-          <!-- Headset / support icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 17V12a8 8 0 1116 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <rect x="2" y="14" width="3" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <rect x="19" y="14" width="3" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M19 20v1a2 2 0 01-2 2h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </svg>
+          <img src="assets/logos/support.svg" alt="Support portal logo" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">Support Portal</div>
@@ -526,21 +505,20 @@
         <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
+      <a href="https://link.villagehandcrafted.ai/remote" class="link-card">
+        <div class="link-icon ic-support">
+          <img src="assets/logos/support.svg" alt="Splashtop logo" loading="lazy" />
+        </div>
+        <div class="link-info">
+          <div class="link-title">Splashtop Deployment</div>
+          <div class="link-url">link.villagehandcrafted.ai/remote</div>
+        </div>
+        <span class="link-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
       <a href="https://link.villagehandcrafted.ai/scan" class="link-card">
         <div class="link-icon ic-scan">
-          <!-- QR / scanner icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <rect x="5.5" y="5.5" width="2" height="2" rx="0.4" fill="currentColor"/>
-            <rect x="16.5" y="5.5" width="2" height="2" rx="0.4" fill="currentColor"/>
-            <rect x="5.5" y="16.5" width="2" height="2" rx="0.4" fill="currentColor"/>
-            <rect x="14" y="14" width="3.5" height="3.5" rx="0.5" fill="currentColor"/>
-            <rect x="19.5" y="14" width="1.5" height="1.5" rx="0.3" fill="currentColor"/>
-            <rect x="14" y="19.5" width="1.5" height="1.5" rx="0.3" fill="currentColor"/>
-            <rect x="19.5" y="19.5" width="1.5" height="1.5" rx="0.3" fill="currentColor"/>
-          </svg>
+          <img src="assets/logos/scanner.svg" alt="Scanner app logo" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">KBIS Scanner App</div>
@@ -551,11 +529,7 @@
 
       <a href="https://link.villagehandcrafted.ai/photos" class="link-card">
         <div class="link-icon ic-photos">
-          <!-- Camera icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 9a2 2 0 012-2h1.586a1 1 0 00.707-.293l1.414-1.414A1 1 0 019.414 5h5.172a1 1 0 01.707.293l1.414 1.414A1 1 0 0017.414 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          </svg>
+          <img src="assets/logos/picsio.svg" alt="Pics.io logo" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">Pics.io</div>
@@ -574,11 +548,7 @@
 
       <a href="https://link.villagehandcrafted.ai/ops" class="link-card">
         <div class="link-icon ic-ops">
-          <!-- Settings / gear icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
+          <img src="assets/logos/production-os.svg" alt="Production OS logo" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">Production OS</div>
